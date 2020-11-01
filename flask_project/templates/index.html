@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock  %}
+
+{% block body %}
+<div class="content" style="align-content: center">
+	<h1 style="text-align:  center "> Comments </h1>
+	<h2 style="text-align: center">+	+	+	+	+	+	+	+	+	+</h2>
+
+	<table style="margin-left: auto; margin-right: auto;">
+		<tr>
+			<th>Comments</th>
+			<th>Date </th>
+			<th>Definitions</th>
+			<th>Actions</th>
+		</tr>
+		{% for task in tasks %}
+			<tr>
+				<td>{{ task.content }}</td>
+				<td>{{ task.date_created }}</td>
+				
+				<td>
+					<a href="/delete/{{task.id}}">Delete</a>
+					<br>
+					<a href="/update/{{task.id}}">Update</a>
+				</td>
+			</tr>
+		{% endfor %}
+	</table>
+	<div class='form' style="margin-left: auto; margin-right: auto; width:250px; margin-top: 20px;" >
+		<form action="/" method='POST'>
+			<input type="text" name="content" id="content" style="padding-bottom: 20px">
+			<input type="submit" value = "Add Task" >
+		</form>	
+	</div>
+	
+</div>
+{% endblock  %}
